@@ -2,195 +2,258 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XO Nexus </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>XO Nexus</title>
+
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #141e45 50%, #0a0e27 100%);
-            color: #e0e0f0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
         }
 
-        .glow-cyan {
-            position: fixed;
-            top: -200px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 229, 255, 0.06) 0%, transparent 70%);
-            pointer-events: none;
+        body{
+        font-family:'Segoe UI',system-ui,-apple-system,sans-serif;
+        background:linear-gradient(
+        180deg,
+        #0A0F14 0%,
+        #121A22 100%
+        );
+        color:#E6EDF3;
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
         }
 
-        .glow-purple {
-            position: fixed;
-            bottom: -200px;
-            right: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(124, 77, 255, 0.06) 0%, transparent 70%);
-            pointer-events: none;
+        /* Glow Effects */
+        .glow-green{
+        position:fixed;
+        top:-180px;
+        left:-100px;
+        width:500px;
+        height:500px;
+        background:radial-gradient(
+        circle,
+        rgba(0,230,118,.08) 0%,
+        transparent 70%
+        );
+        pointer-events:none;
         }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 40px 24px;
-            max-width: 520px;
-            width: 100%;
+        .glow-gold{
+        position:fixed;
+        bottom:-180px;
+        right:-100px;
+        width:500px;
+        height:500px;
+        background:radial-gradient(
+        circle,
+        rgba(255,193,7,.06) 0%,
+        transparent 70%
+        );
+        pointer-events:none;
         }
 
-        .icon-wrapper {
-            margin-bottom: 32px;
+        .container{
+        position:relative;
+        z-index:2;
+        max-width:520px;
+        width:100%;
+        padding:40px 24px;
+        text-align:center;
         }
 
-        .icon-wrapper img {
-            width: 120px;
-            height: 120px;
-            border-radius: 28px;
-            box-shadow:
-                0 0 40px rgba(0, 229, 255, 0.15),
-                0 0 80px rgba(124, 77, 255, 0.1),
-                0 20px 60px rgba(0, 0, 0, 0.4);
+        .icon-wrapper{
+        margin-bottom:30px;
         }
 
-        h1 {
-            font-size: 36px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #00e5ff 0%, #7c4dff 50%, #e040fb 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
+        .icon-wrapper img{
+        width:120px;
+        height:120px;
+        border-radius:28px;
+        box-shadow:
+        0 0 30px rgba(0,230,118,.15),
+        0 0 70px rgba(0,191,165,.08),
+        0 20px 50px rgba(0,0,0,.45);
         }
 
-        .subtitle {
-            font-size: 16px;
-            color: #8888aa;
-            margin-bottom: 48px;
+        h1{
+        font-size:38px;
+        font-weight:800;
+        background:linear-gradient(
+        135deg,
+        #00E676 0%,
+        #00BFA5 100%
+        );
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+        margin-bottom:8px;
         }
 
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+        .subtitle{
+        font-size:16px;
+        color:#9FB3C8;
+        margin-bottom:48px;
         }
 
-        .link-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 20px 24px;
-            background: rgba(20, 30, 69, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.25s ease;
-            backdrop-filter: blur(12px);
+        /* Links */
+        .links{
+        display:flex;
+        flex-direction:column;
+        gap:18px;
         }
 
-        .link-card:hover {
-            border-color: rgba(0, 229, 255, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(0, 229, 255, 0.08);
+        .link-card{
+        display:flex;
+        align-items:center;
+        gap:16px;
+        padding:22px 24px;
+        background:#1B2630;
+        border:1px solid rgba(0,230,118,.08);
+        border-radius:18px;
+        text-decoration:none;
+        color:inherit;
+        backdrop-filter:blur(12px);
+        transition:.25s ease;
         }
 
-        .link-card.purple:hover {
-            border-color: rgba(124, 77, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(124, 77, 255, 0.08);
+        .link-card:hover{
+        transform:translateY(-3px);
+        border-color:#00E676;
+        box-shadow:
+        0 8px 30px rgba(0,230,118,.12);
         }
 
-        .link-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 22px;
+        .link-card.gold:hover{
+        border-color:#FFC107;
+        box-shadow:
+        0 8px 30px rgba(255,193,7,.12);
         }
 
-        .link-card .link-icon { background: rgba(0, 229, 255, 0.1); }
-        .link-card.purple .link-icon { background: rgba(124, 77, 255, 0.1); }
-
-        .link-text { text-align: left; }
-
-        .link-text h2 {
-            font-size: 17px;
-            font-weight: 700;
-            color: #f0f0ff;
-            margin-bottom: 2px;
+        .link-icon{
+        width:50px;
+        height:50px;
+        border-radius:14px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:22px;
+        flex-shrink:0;
         }
 
-        .link-text p {
-            font-size: 13px;
-            color: #8888aa;
+        .link-card .link-icon{
+        background:rgba(0,230,118,.12);
         }
 
-        .arrow {
-            margin-left: auto;
-            color: #555570;
-            font-size: 18px;
-            transition: transform 0.2s;
+        .link-card.gold .link-icon{
+        background:rgba(255,193,7,.12);
         }
 
-        .link-card:hover .arrow { transform: translateX(4px); color: #00e5ff; }
-        .link-card.purple:hover .arrow { color: #b388ff; }
+        .link-text{
+        text-align:left;
+        }
 
-        footer {
-            position: relative;
-            z-index: 1;
-            margin-top: 60px;
-            font-size: 13px;
-            color: #444460;
+        .link-text h2{
+        font-size:17px;
+        font-weight:700;
+        color:#E6EDF3;
+        margin-bottom:4px;
+        }
+
+        .link-text p{
+        font-size:13px;
+        color:#9FB3C8;
+        }
+
+        .arrow{
+        margin-left:auto;
+        font-size:18px;
+        color:#6D8093;
+        transition:.2s;
+        }
+
+        .link-card:hover .arrow{
+        transform:translateX(4px);
+        color:#00E676;
+        }
+
+        .link-card.gold:hover .arrow{
+        color:#FFC107;
+        }
+
+        footer{
+        margin-top:60px;
+        font-size:13px;
+        color:#6D8093;
+        z-index:2;
+        }
+
+        /* Mobile */
+        @media(max-width:600px){
+        h1{
+        font-size:32px;
+        }
+
+        .link-card{
+        padding:18px 18px;
+        }
         }
     </style>
+
 </head>
 <body>
-    <div class="glow-cyan"></div>
-    <div class="glow-purple"></div>
 
-    <div class="container">
-        <div class="icon-wrapper">
-            <img src="icon.png" alt="XO Nexus App Icon">
-        </div>
+<div class="glow-green"></div>
+<div class="glow-gold"></div>
 
-        <h1>XO Nexus</h1>
-        <p class="subtitle">Tic Tac Toe</p>
+<div class="container">
 
-        <div class="links">
-            <a href="privacy-policy.html" class="link-card">
-                <div class="link-icon">&#128274;</div>
-                <div class="link-text">
-                    <h2>Privacy Policy</h2>
-                    <p>How we handle your data</p>
-                </div>
-                <span class="arrow">&rarr;</span>
-            </a>
-
-            <a href="terms-of-service.html" class="link-card purple">
-                <div class="link-icon">&#128220;</div>
-                <div class="link-text">
-                    <h2>Terms of Service</h2>
-                    <p>Rules for using our app</p>
-                </div>
-                <span class="arrow">&rarr;</span>
-            </a>
-        </div>
+    <div class="icon-wrapper">
+        <img src="icon.png" alt="XO Nexus Icon">
     </div>
 
-    <footer>
-        <p>&copy; 2026 XO Nexus</p>
-    </footer>
+    <h1>XO Nexus</h1>
+    <p class="subtitle">Tic Tac Toe</p>
+
+    <div class="links">
+
+        <a href="privacy-policy.html" class="link-card">
+            <div class="link-icon">
+                🔒
+            </div>
+
+            <div class="link-text">
+                <h2>Privacy Policy</h2>
+                <p>How we handle your data</p>
+            </div>
+
+            <span class="arrow">→</span>
+        </a>
+
+
+        <a href="terms-of-service.html" class="link-card gold">
+            <div class="link-icon">
+                📄
+            </div>
+
+            <div class="link-text">
+                <h2>Terms of Service</h2>
+                <p>Rules for using our app</p>
+            </div>
+
+            <span class="arrow">→</span>
+        </a>
+
+    </div>
+
+</div>
+
+<footer>
+    © 2026 XO Nexus
+</footer>
+
 </body>
 </html>
